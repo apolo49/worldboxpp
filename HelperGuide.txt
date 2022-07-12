@@ -1,0 +1,56 @@
+1. Enter mod.json and add the name of your mod to the name section
+(im assuming you have visual studio code and know C#)
+2.Add the picture you want as the icon of your mod and rename it to icon.png
+3.Rename the name space in Traits.cs to whatever you want, then put that same name in the namespace in main.cs
+4. Add your own traits and enjoy!
+5. Dont forget to add PlayerConfig.unlockTrait("Trait Name"); add the end of your trait code
+6. Dont forget to remove this when you're done
+7. All the baseStats are health, damage, intelligence, stewardship, warfare, diplomacy, range, attackSpeed, all of these baseStats only need a =
+8. Armor needs a + before the =
+9. Speed,scale need a + before the = and an f after the numbers for your baseStats
+10.knockbackReduction,inherit, areaOfEffect, and birth need an f after the numbers for your baseStats
+11. birth and inherit are not baseStats so they would be Trait name.birth = 100f;
+
+1.Im assuming its been a couple days since you have made your mod, to make your mod less... shit sorry not sorry ill show you how to add custom icons
+2.Make a GameResources folder
+3.Inside the GameResources folder make an ui folder
+4.Inside the ui folder you make an Icons folder
+5.Now you can add the transparent png into your Icons folder for example "God.png"
+6.Inside your icon code write is as "ui/Icons/God"
+7.Dont forget to remove this when you're done
+8.Now you can enjoy custom icons!
+
+                                Special Effects / Death Effects (1/2)
+
+1. You have most likely seen trait mods like trait bonanza, traitbox, and super traits and have wondered how do they make the traits do special things.
+2. You're gonna make another line of code, heres an example "Trait Name.action_death = new WorldAction(ActionLibrary.castTornado);
+3. What that code did is that whenver when someone with that trait dies it summons a tornado
+4. You can edit that code with other special effects in the game
+5. To check all the actions use dnspy and check Assembly-CSharp and click the option that has {-}
+6. After you click - look for ActionLibrary
+7. Now you have learned all the 3 basic elements of trait mods now go make your mod from half-ass to 3 quarter ass
+8. Dont forget to remove this when you're done
+                                
+                                Special Effects / Death Effects (2/2)
+1.Wow your done well now part 2 is out
+2. you will add a line of code called trait name.action_special_effect = (WorldAction)Delegate.Combine(Trait name.action_special_effect, new WorldAction(Whatever));
+3. now go to the bottom of traits.cs and you will find a build that looks likes the example of below
+
+                        }
+                        }
+}
+4. If you want to make a system so that it adds giant trait if they have slow trait then you will make it look like this
+
+                        }
+                        public static bool Whatever you put in the action effect code(BaseSimObject pTarget, WorldTile pTile = null)
+				}
+                        	Actor a = Reflection.GetField(pTarget.GetType(), pTarget, "a") as Actor;
+                              a.addTrait("giant")
+                              return true;
+                        }
+                        
+                        }
+}
+5. Ummm well i guess this is it i mean goodbye i hope you make good mods
+
+                                 
