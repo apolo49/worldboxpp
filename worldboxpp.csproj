@@ -63,6 +63,8 @@
   <ItemGroup>
     <None Include=".circleci\config.yml" />
     <None Include="app.config" />
+    <None Include="EmbeddedResources\.gitkeep" />
+    <None Include="GameResources\ui\Icons\.gitkeep" />
     <None Include="mod.json" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -82,10 +84,7 @@
     <Compile Include="Code\Main.cs" />
     <Compile Include="Code\MapBoxpp.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EmbeddedResources\" />
-    <Folder Include="GameResources\ui\Icons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
