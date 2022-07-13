@@ -2,15 +2,16 @@
 version: 2.1
 
 jobs:
-   deploy:
-      docker:
+  resource_class:
+  deploy:
+    docker:
       # Primary container image where all steps run
-        - image: alpine
-      steps:
-        - checkout
-        - command: |
-          echo 'Creating .mod file';
-          ls;
+      - image: alpine
+    steps:
+      - checkout
+      - command: |
+        echo 'Creating .mod file'
+        ls
 workflows:
   Build and deploy:
     jobs:
