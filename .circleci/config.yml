@@ -31,7 +31,9 @@ jobs:
           command: |
             apk add zip 
             echo "Creating mod file"
-            zip -r './Worldbox++.mod' ./deploy/*
+            zip -r '/artifacts/Worldbox++.mod' ./deploy/*
+    - store_artifacts:
+          path: /artifacts
 workflows:
   Build and deploy:
     jobs:
