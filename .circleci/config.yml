@@ -15,6 +15,10 @@ jobs:
             echo 'Creating .mod file'
             ls
       - run:
+          name: Version number
+          command: |
+            sed "4 s/<COMMIT_HASH>/${CIRCLE_SHA1}"
+      - run:
           name: Change structure
           command: |
             mkdir ./deploy
