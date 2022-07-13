@@ -10,10 +10,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: State and list
-        command: |
-          echo 'Creating .mod file'
-          ls
+          name: State and list
+          command: |
+            echo 'Creating .mod file'
+            ls
 workflows:
   Build and deploy:
     jobs:
