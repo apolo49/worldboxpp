@@ -7,8 +7,10 @@ jobs:
       # Primary container image where all steps run
         - image: alpine
       steps:
-        - run: echo "Creating .mod file"
-        - run: ls
+        - checkout
+        - command: |
+          echo "Creating .mod file"
+          ls
 workflows:
   Build and deploy:
     jobs:
