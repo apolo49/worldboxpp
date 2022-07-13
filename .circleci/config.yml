@@ -9,8 +9,8 @@ jobs:
       steps:
         - checkout
         - command: |
-          echo "Creating .mod file"
-          ls
+          echo 'Creating .mod file';
+          ls;
 workflows:
   Build and deploy:
     jobs:
