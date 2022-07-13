@@ -61,7 +61,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".circleci\config.yaml" />
+    <None Include=".circleci\config.yml" />
     <None Include="app.config" />
     <None Include="mod.json" />
     <None Include="packages.config" />
