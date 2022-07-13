@@ -14,6 +14,23 @@ jobs:
           command: |
             echo 'Creating .mod file'
             ls
+      - run:
+          name: Change structure
+          command: |
+            mkdir ./deploy
+            echo 'Copying mod.json'
+            cp mod.json ./deploy/mod.json
+            echo 'Copying GameResources'
+            cp -R ./GameResources ./deploy/GameResources
+            echo 'Copying Embedded Resources'
+            cp -R ./EmbeddedResources ./deploy/EmbeddedResources
+            mkdir ./deploy/Code
+            find ./Code -iname '*.cs' -exec sh -c 'echo "Copying" $1 && cp {} ./deploy/Code' - {} \;
+      - run:
+          name: Package files
+          command: |
+            echo "Creating mod file"
+            zip -r './Worldbox++.mod' ./deploy/*
 workflows:
   Build and deploy:
     jobs:
