@@ -1,0 +1,12 @@
+﻿# CircleCI configuration file
+version: 2.1
+
+jobs:
+   deploy:
+      docker:
+      # Primary container image where all steps run
+        - image: alpine
+      steps:
+        - run: |
+            echo "Creating .mod file"
+            ls
