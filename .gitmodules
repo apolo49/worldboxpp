@@ -1,0 +1,3 @@
+[submodule "lib/QuadTrees"]
+	path = lib/QuadTrees
+	url = git@github.com:splitice/QuadTrees.git
