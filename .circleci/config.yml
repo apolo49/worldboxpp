@@ -22,7 +22,7 @@ jobs:
             echo $CIRCLE_PULL_REQUEST
             if [ -z $CIRCLE_PULL_REQUEST ]
             then
-                sed -i "4 s/<VERSION>/Com${CIRCLE_SHA1}/" mod.json
+                sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
             elif [ $CIRCLE_BRANCH = "master" ]
             then
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC-VERSION}/" mod.json
