@@ -7,6 +7,8 @@ jobs:
     docker:
       # Primary container image where all steps run
       - image: alpine
+        environment:
+          VERSION: 0.0.1
     steps:
       - checkout
       - run:
@@ -17,7 +19,15 @@ jobs:
       - run:
           name: Version number
           command: |
-            sed -i "4 s/<COMMIT_HASH>/${CIRCLE_SHA1}/" mod.json
+            echo $CIRCLE_PULL_REQUEST
+            if [ -z $CIRCLE_PULL_REQUEST ]
+            then
+                sed -i "4 s/<VERSION>/${CIRCLE_SHA1}/" mod.json
+            elif [ $CIRCLE_BRANCH = "master" ]
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC-VERSION}/" mod.json
+            else
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC-VERSION}/" mod.json
+            fi
       - run:
           name: Change structure
           command: |
