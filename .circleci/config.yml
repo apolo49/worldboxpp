@@ -24,6 +24,7 @@ jobs:
             then
                 sed -i "4 s/<VERSION>/${CIRCLE_SHA1}/" mod.json
             elif [ $CIRCLE_BRANCH = "master" ]
+            then
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC-VERSION}/" mod.json
             else
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC-VERSION}/" mod.json
