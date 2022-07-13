@@ -9,7 +9,9 @@ jobs:
       - image: alpine
     steps:
       - checkout
-      - command: |
+      - run:
+        name: State and list
+        command: |
           echo 'Creating .mod file'
           ls
 workflows:
