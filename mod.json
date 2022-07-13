@@ -1,7 +1,7 @@
 {
     "name": "Worldbox++",
     "author": "Joe Targett",
-    "version": "1.0.0",
+    "version": "0.0.1#<COMMIT_HASH>",
     "description": "Optimizations and additions to worldbox",
     "iconPath": "GameResources/ui/Icons/icon.png"
 }
