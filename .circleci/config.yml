@@ -29,6 +29,7 @@ jobs:
       - run:
           name: Package files
           command: |
+            apk add zip 
             echo "Creating mod file"
             zip -r './Worldbox++.mod' ./deploy/*
 workflows:
