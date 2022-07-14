@@ -2,6 +2,14 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/apolo49/worldboxpp/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/apolo49/worldboxpp/tree/master)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=coverage)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=bugs)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=worldboxpp&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=worldboxpp)
 
 WorldBox++ is a mod for WorldBox with the goal of optimising WorldBox
 with larger maps and adding new features to enhance the worldbox experience.

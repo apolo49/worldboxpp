@@ -5,12 +5,13 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: openjdk:11-jdk-buster
+      - image: cimg/openjdk:18.0.1
     steps:
       - checkout
       - run:
           name: "Replace Sonarqube project version"
           command: |
+            ls | grep sonar
             if [ -z "$VERSION" ]
             then
                 sed -i -e "6 s/<VERSION>/${VERSION}/" sonar-project.properties
