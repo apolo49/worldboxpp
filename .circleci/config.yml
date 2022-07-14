@@ -15,6 +15,24 @@ jobs:
             (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
             Get-Content ./sonar-project.properties
       - run:
+          name: Download SteamCMD
+          command: |
+            New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
+            Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
+            Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
+      - run:
+          name: Download WorldBox
+          command: |
+            cd C:\steamcmd
+            steamcmd +force_install_dir C:\worldbox +login anonymous +app_update 1206560 +quit
+            cd -
+      - run:
+          name: Download NCMS
+          command: |
+            New-Item -Path "C:\" -Name "NCMS" -ItemType "directory"
+            Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.5.1.zip -outfile "C:\ncms.zip"
+            Expand-Archive -LiteralPath "C:\ncms.zip" -DestinationPath "C:\ncms"
+      - run:
           name: "Install SonarScanner for .NET"
           command: |
             dotnet tool install --global dotnet-sonarscanner
@@ -61,6 +79,7 @@ jobs:
             else
                 sed -i -e "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
             fi
+
       - run:
           name: Change structure
           command: |
