@@ -5,7 +5,7 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: dotnet-sonar:22.07.3
+      - image: nosinovacao/dotnet-sonar:22.07.3
     steps:
       - checkout
       - run:
