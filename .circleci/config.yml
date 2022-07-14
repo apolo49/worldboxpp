@@ -27,7 +27,7 @@ jobs:
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
             elif [ -z "$CIRCLE_PULL_REQUEST"  ]
             then
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${$CIRCLE_PULL_REQUEST}/" mod.json
             else
                 sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
             fi
