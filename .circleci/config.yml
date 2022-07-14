@@ -27,7 +27,6 @@ jobs:
       - run:
           name: SonarCloud
           command: >
-            pwd
             set -e
 
             VERSION=4.7.0.2747
@@ -39,9 +38,7 @@ jobs:
 
             OS="linux"
 
-            echo $SONAR_USER_HOME
-
-            sonar-scanner -Dsonar.projectKey=worldboxpp
+            sonar-scanner -Dsonar.projectKey=worldboxpp -Dsonar.sources=/tmp/project
   deploy:
     environment:
       RC_VERSION: 1
