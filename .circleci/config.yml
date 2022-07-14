@@ -26,7 +26,7 @@ jobs:
             Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
             Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
             git clone https://github.com/weilbyte/steamcmd-2fa C:/steamcmd-2fa
-            cargo build C:/steamcmd-2fa
+            cargo build --manifest-path=C:/steamcmd-2fa/Cargo.toml
             ls C:/steamcmd-2fa
       - run:
           name: Download WorldBox
