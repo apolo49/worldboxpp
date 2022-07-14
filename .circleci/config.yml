@@ -50,7 +50,7 @@ jobs:
             dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login="${SONAR_TOKEN}" \
             /d:sonar.sources="/tmp/project" \
             /d:sonar.verbose=true \
-            /d:sonar.organization="apolo49"
+            /o:"apolo49"
       - run:
           name: sonar-end
           command: |
