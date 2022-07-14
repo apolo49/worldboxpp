@@ -1,0 +1,57 @@
+﻿---
+
+version: 2.1
+
+jobs:
+  deploy:
+    environment:
+      VERSION: 0.0.1
+    docker:
+      # Primary container image where all steps run
+      - image: alpine
+    steps:
+      - checkout
+      - run:
+          name: State and list
+          command: |
+            echo 'Creating .mod file'
+            ls
+      - run:
+          name: Version number
+          command: |
+            echo $CIRCLE_PULL_REQUEST
+            if [ -z $CIRCLE_PULL_REQUEST ]
+            then
+                sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
+            elif [ $CIRCLE_BRANCH = "master" ]
+            then
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+            else
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+            fi
+      - run:
+          name: Change structure
+          command: |
+            mkdir ./deploy
+            echo 'Copying mod.json'
+            cp mod.json ./deploy/mod.json
+            echo 'Copying GameResources'
+            cp -R ./GameResources ./deploy/GameResources
+            echo 'Copying Embedded Resources'
+            cp -R ./EmbeddedResources ./deploy/EmbeddedResources
+            mkdir ./deploy/Code
+            find ./Code -iname '*.cs' -exec sh -c 'echo "Copying" $1 && cp {} ./deploy/Code' - {} \;
+      - run:
+          name: Package files
+          command: |
+            apk add zip
+            echo "Creating mod file"
+            mkdir /artifacts
+            cd deploy
+            zip -r '/artifacts/Worldbox++.mod' .
+      - store_artifacts:
+          path: /artifacts
+workflows:
+  Build and deploy:
+    jobs:
+      - deploy

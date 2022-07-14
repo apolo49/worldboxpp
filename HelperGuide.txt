@@ -30,7 +30,7 @@
 6. After you click - look for ActionLibrary
 7. Now you have learned all the 3 basic elements of trait mods now go make your mod from half-ass to 3 quarter ass
 8. Dont forget to remove this when you're done
-                                
+
                                 Special Effects / Death Effects (2/2)
 1.Wow your done well now part 2 is out
 2. you will add a line of code called trait name.action_special_effect = (WorldAction)Delegate.Combine(Trait name.action_special_effect, new WorldAction(Whatever));
@@ -48,9 +48,7 @@
                               a.addTrait("giant")
                               return true;
                         }
-                        
+
                         }
 }
 5. Ummm well i guess this is it i mean goodbye i hope you make good mods
-
-                                 
