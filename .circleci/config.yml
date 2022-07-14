@@ -44,17 +44,21 @@ jobs:
             dotnet tool install --global dotnet-sonarscanner
             echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
       - run:
-          name: sonar-scan
+          name: sonar-begin
           command: |
             URL="https://sonarcloud.io"
-            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login="${SONAR_TOKEN}" \
+            sonarscanner.MSBuild begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login="${SONAR_TOKEN}" \
             /d:sonar.sources="/tmp/project" \
             /d:sonar.verbose=true \
             /o:"apolo49"
       - run:
+          name: build-dll
+          command: |
+            MSBuild . /t:Rebuild
+      - run:
           name: sonar-end
           command: |
-            dotnet sonarscanner end /d:sonar.login=$Env:SONAR_TOKEN
+            sonarscanner.MSBuild end /d:sonar.login=$Env:SONAR_TOKEN
 
   deploy:
     environment:
