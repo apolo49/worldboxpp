@@ -17,6 +17,7 @@ jobs:
             else
                 sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
             fi
+            cat ./sonar-project.properties | echo
       - sonarcloud/scan
   deploy:
     environment:
