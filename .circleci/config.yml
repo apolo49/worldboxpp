@@ -1,7 +1,8 @@
 ﻿---
 
 version: 2.1
-
+orbs:
+  dotnet-sonarscanner: storytel/dotnet-sonarscanner@1.4.3
 jobs:
   sonarscan:
     docker:
@@ -80,8 +81,6 @@ jobs:
             zip -r '/artifacts/Worldbox++.mod' .
       - store_artifacts:
           path: /artifacts
-orbs:
-  dotnet-sonarscanner: storytel/dotnet-sonarscanner@1.4.3
 workflows:
   Build and deploy:
     jobs:
