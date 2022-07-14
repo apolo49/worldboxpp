@@ -3,9 +3,23 @@
 version: 2.1
 
 jobs:
+  sonarscan:
+    docker:
+      - image: mcr.microsoft.com/dotnet/framework
+    steps:
+      - checkout
+      - run:
+          name: "Replace sonar version"
+          command: |
+            if [ -z "$VERSION" ]
+            then
+                sed -i -e "6 s/<VERSION>/${VERSION}/" sonar-project.properties
+            else
+                sed -i -e "6 s/<VERSION>/UNKNOWN/" sonar-project.properties
+            fi
+      - sonarcloud/scan
   deploy:
     environment:
-      VERSION: 0.0.1
       RC_VERSION: 1
     docker:
       # Primary container image where all steps run
@@ -54,6 +68,8 @@ jobs:
             zip -r '/artifacts/Worldbox++.mod' .
       - store_artifacts:
           path: /artifacts
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.1.0
 workflows:
   Build and deploy:
     jobs:
