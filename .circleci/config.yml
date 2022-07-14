@@ -15,11 +15,6 @@ jobs:
             (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
             Get-Content ./sonar-project.properties
       - run:
-          name: Install Rust
-          command: |
-            Invoke-WebRequest -Uri https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -outfile "C:\rustup.exe"
-            C:\rustup.exe -y
-      - run:
           name: Download SteamCMD
           command: |
             New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
