@@ -6,6 +6,7 @@ jobs:
   deploy:
     environment:
       VERSION: 0.0.1
+      RC_VERSION: 1
     docker:
       # Primary container image where all steps run
       - image: alpine
