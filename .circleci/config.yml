@@ -6,7 +6,7 @@ orbs:
 jobs:
   sonarscan:
     docker:
-      - image: openjdk/19-jdk-buster
+      - image: openjdk:19-jdk-buster
     steps:
       - checkout
       - run:
