@@ -20,10 +20,10 @@ jobs:
           name: Version number
           command: |
             echo $CIRCLE_PULL_REQUEST
-            if [ -z $CIRCLE_PULL_REQUEST ]
+            if [ $CIRCLE_BRANCH = "master" ]
             then
                 sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
-            elif [ $CIRCLE_BRANCH = "master" ]
+            elif [ -z $CIRCLE_PULL_REQUEST  ]
             then
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
             else
