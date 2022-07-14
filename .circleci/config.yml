@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Download WorldBox
           command: |
-            C:\steamcmd\steamcmd-2fa -path "./steamcmd" -username $Env:STEAM1 -password $Env:STEAM2 -seed $Env:STEAM3 -args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
+            C:\steamcmd\steamcmd-2fa -path "C:/steamcmd/steamcmd.exe" -username $Env:STEAM1 -password $Env:STEAM2 -seed $Env:STEAM3 -args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
       - run:
           name: Download NCMS
           command: |
