@@ -20,7 +20,31 @@ jobs:
                 sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
             fi
             cat ./sonar-project.properties
-      - sonar-install
+      - run:
+          name: "Install Java"
+          command: |
+            apt-get update
+            apt-get install -y gnupg
+            apt-get install -y jq
+            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
+            apt-get install -y software-properties-common
+            apt-get install -y apt-transport-https
+            add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+            apt-get update
+            apt-get install -y adoptopenjdk-13-hotspot
+      - run:
+          name: "Install SonarScanner for .NET"
+          command: |
+            wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+            sudo dpkg -i packages-microsoft-prod.deb
+            rm packages-microsoft-prod.deb
+
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https && \
+            sudo apt-get update && \
+            sudo apt-get install -y dotnet-sdk-6.0 dotnet-runtime-6.0
+            dotnet tool install --global dotnet-sonarscanner
+            echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
       - run:
           name: sonar-scan
           command: |
@@ -29,7 +53,10 @@ jobs:
             /d:sonar.host.url=https://sonarcloud.id \
             /d:sonar.login=$Env:SONAR_TOKEN \
             /d:sonar.sources=/tmp/project
-      - sonar-end
+      - run:
+          name: sonar-end
+          command: |
+            dotnet sonarscanner end /d:sonar.login=$Env:SONAR_TOKEN
 
   deploy:
     environment:
