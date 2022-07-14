@@ -5,7 +5,7 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: mcr.microsoft.com/dotnet/framework/sdk:4.8
+      - image: mcr.microsoft.com/dotnet/sdk:7.0-alpine-amd64
     steps:
       - checkout
       - run:
