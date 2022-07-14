@@ -15,12 +15,20 @@ jobs:
             (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
             Get-Content ./sonar-project.properties
       - run:
+          name: Install Rust
+          command: |
+            New-Item -Path "C:\" -Name "rust" -ItemType "directory"
+            Invoke-WebRequest -Uri https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -outfile "C:\rustup.exe"
+            C:\rustup-init.exe -y
+      - run:
           name: Download SteamCMD
           command: |
             New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
             Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
             Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
-            Invoke-WebRequest -Uri https://github.com/Weilbyte/steamcmd-2fa/releases/download/1.0.0/steamcmd-2fa.exe -outfile "C:\steamcmd\steamcmd-2fa.exe"
+            git clone https://github.com/weilbyte/steamcmd-2fa C:/steamcmd-2fa
+            cargo build C:/steamcmd-2fa
+            ls C:/steamcmd-2fa
       - run:
           name: Download WorldBox
           command: |
