@@ -73,4 +73,5 @@ orbs:
 workflows:
   Build and deploy:
     jobs:
+      - sonarscan
       - deploy
