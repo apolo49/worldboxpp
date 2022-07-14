@@ -26,7 +26,7 @@ jobs:
       - run:
           name: build-dll
           command: |
-            dotnet restore
+            dotnet restore ./worldboxpp.csproj
             dotnet build .
       - run:
           name: sonar-end
