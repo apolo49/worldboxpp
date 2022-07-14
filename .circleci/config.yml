@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Download WorldBox
           command: |
-            C:\steamcmd\steamcmd +force_install_dir C:\worldbox +login anonymous +app_update 1206560 validate +quit
+            C:\steamcmd\steamcmd +force_install_dir C:\worldbox +login $Env:STEAM1 $Env:STEAM2 +app_update 1206560 validate +quit
       - run:
           name: Download NCMS
           command: |
