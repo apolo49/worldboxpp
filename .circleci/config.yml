@@ -22,20 +22,15 @@ jobs:
           command: |
             if [ "$CIRCLE_BRANCH" = "master" ]
             then
-                sed "4 s/<VERSION>/${VERSION}/" mod.json
-                sed -i "4 s/<VERSION>/${VERSION}/" mod.json
+                sed -i -e "4 s/<VERSION>/${VERSION}/" mod.json
             elif [ "$CIRCLE_BRANCH" = "staging" ]
             then
-                sed "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+                sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
             elif [ ! -z "CIRCLE_PULL_REQUEST" ]
             then
-                echo "${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}"
-                sed "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}/" mod.json
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}/" mod.json
+                sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}/" mod.json
             else
-                sed "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
-                sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
+                sed -i -e "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
             fi
       - run:
           name: Change structure
