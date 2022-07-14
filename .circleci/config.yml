@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Replace sonar version"
+          name: "Replace Sonarqube project version"
           command: |
             if [ -z "$VERSION" ]
             then
