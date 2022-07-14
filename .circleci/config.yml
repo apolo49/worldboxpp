@@ -5,7 +5,9 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: cimg/openjdk:18.0.1
+      - image: sonarsource/sonar-scanner-cli
+        environment:
+          SONAR_HOST_URL: https://sonarcloud.io
     steps:
       - checkout
       - run:
@@ -19,7 +21,29 @@ jobs:
                 sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
             fi
             cat ./sonar-project.properties
-      - sonarcloud/scan
+      - run:
+          command: mkdir -p /tmp/cache/scanner
+          name: Create cache dir
+      - restore_cache:
+          keys:
+            - v<<parameters.cache_version>>-sonarcloud-scanner-4.7.0.2747
+      - run:
+          name: SonarCloud
+          command: >
+            set -e
+
+            VERSION=4.7.0.2747
+
+            SCANNER_DIRECTORY=/tmp/cache/scanner
+
+            export SONAR_USER_HOME=$SCANNER_DIRECTORY/.sonar
+            export SONAR_LOGIN=$SONAR_TOKEN
+
+            OS="linux"
+
+            echo $SONAR_USER_HOME
+
+            sonar-scanner
   deploy:
     environment:
       RC_VERSION: 1
