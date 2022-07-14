@@ -6,43 +6,26 @@ orbs:
 jobs:
   sonarscan:
     docker:
-      - image: openjdk:19-jdk-buster
+      - image: mcr.microsoft.com/dotnet/framework/sdk:4.7.2
     steps:
       - checkout
       - run:
           name: "Replace Sonarqube project version"
           command: |
-            ls
-            if [ ! -z "${VERSION}" ]
-            then
-                sed -i -e "s/<VERSION>/${VERSION}/" ./sonar-project.properties
-            else
-                sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
-            fi
-            cat ./sonar-project.properties
+            (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
+            Get-Content ./sonar-project.properties
       - run:
           name: "Install Java"
           command: |
-            apt-get update
-            apt-get install -y gnupg jq
-            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
-            apt-get install -y software-properties-common apt-transport-https
-            add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-            apt-get update
-            apt-get install -y adoptopenjdk-13-hotspot
+            Invoke-WebRequest -Uri https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe -outfile jdk-18_windows-x64_bin.exe
+            Write-Output "Installing Java"
+            Start-Process 'jdk-18_windows-x64_bin.exe' /s
+            Write-Output "Java installed."
+            Remove-Item jdk-18_windows-x64_bin.exe
       - run:
           name: "Install SonarScanner for .NET"
           command: |
-            wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-            dpkg -i packages-microsoft-prod.deb
-            rm packages-microsoft-prod.deb
-
-            apt-get update
-            apt-get install -y apt-transport-https && \
-            apt-get update && \
-            apt-get install -y dotnet-sdk-6.0 dotnet-runtime-6.0
             dotnet tool install --global dotnet-sonarscanner
-            echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
       - run:
           name: sonar-begin
           command: |
