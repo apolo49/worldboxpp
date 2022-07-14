@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Download WorldBox
           command: |
-            C:\steamcmd\steamcmd-2fa -path . -username $Env:STEAM1 -password $Env:STEAM2 -seed $Env:STEAM3 -args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
+            C:\steamcmd\steamcmd-2fa -path "./steamcmd" -username $Env:STEAM1 -password $Env:STEAM2 -seed $Env:STEAM3 -args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
       - run:
           name: Download NCMS
           command: |
@@ -43,7 +43,6 @@ jobs:
       - run:
           name: build-dll
           command: |
-            dotnet restore ./worldboxpp.csproj
             dotnet build .
       - run:
           name: sonar-end
