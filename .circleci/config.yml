@@ -6,7 +6,7 @@ orbs:
 jobs:
   sonarscan:
     docker:
-      - image: mcr.microsoft.com/dotnet/framework/sdk:4.7.2
+      - image: circleci/windows@4.1.1
     steps:
       - checkout
       - run:
