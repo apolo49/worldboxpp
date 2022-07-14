@@ -46,13 +46,8 @@ jobs:
       - run:
           name: sonar-scan
           command: |
-            echo "$SONAR_TOKEN"
-            dotnet sonarscanner begin \
-            /k:"worldboxpp" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.login="$SONAR_TOKEN"\
-            /d:sonar.sources="/tmp/project"
-            /d:sonar.verbose=true
+            URL="https://sonarcloud.io"
+            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login="${SONAR_TOKEN}" /d:sonar.sources="/tmp/project" /d:sonar.verbose=true
       - run:
           name: sonar-end
           command: |
