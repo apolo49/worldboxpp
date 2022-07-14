@@ -4,8 +4,6 @@ version: 2.1
 
 jobs:
   sonarscan:
-    parameters:
-        sonar_host_url: https://sonarcloud.io
     docker:
       - image: openjdk/19-jdk-buster
     steps:
@@ -23,14 +21,13 @@ jobs:
             cat ./sonar-project.properties
       - sonar-install
       - run:
-            name: sonar-scan
-            command: |
-                dotnet sonarscanner begin \
-                /k:worldboxpp \
-                /d:sonar.host.url=https://sonarcloud.id \
-                /d:sonar.login=$Env:SONAR_TOKEN \
-                <<#parameters.sonar_verbose>>/d:sonar.verbose=true<</parameters.sonar_verbose>> \
-                /d:sonar.sources=/tmp/project
+          name: sonar-scan
+          command: |
+            dotnet sonarscanner begin \
+            /k:worldboxpp \
+            /d:sonar.host.url=https://sonarcloud.id \
+            /d:sonar.login=$Env:SONAR_TOKEN \
+            /d:sonar.sources=/tmp/project
       - sonar-end
 
   deploy:
