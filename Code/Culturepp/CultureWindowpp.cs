@@ -14,7 +14,8 @@ namespace Worldboxpp.Culturepp
             if (!string.IsNullOrEmpty(loc))
             {
                 ReflectionUtility.Reflection.CallMethod(__instance, "showStat", "culture_founded_at", loc);
-            } else
+            }
+            else
             {
                 ReflectionUtility.Reflection.CallMethod(__instance, "showStat", "culture_founded_at", "??");
             }

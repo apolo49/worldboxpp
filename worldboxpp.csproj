@@ -62,13 +62,18 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include=".circleci\config.yml" />
+    <None Include=".gitmodules" />
+    <None Include=".pre-commit-config.yaml" />
     <None Include="app.config" />
     <None Include="EmbeddedResources\.gitkeep" />
     <None Include="GameResources\ui\Icons\.gitkeep" />
     <None Include="mod.json" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="HelperGuide.txt" />
   </ItemGroup>
   <ItemGroup>

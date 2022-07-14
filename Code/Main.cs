@@ -7,9 +7,11 @@ using Worldboxpp.Culturepp;
 using HarmonyLib;
 using Worldboxpp.Helpers;
 
-namespace Worldboxpp{ //Change example to the name of your mod
+namespace Worldboxpp
+{ //Change example to the name of your mod
     [ModEntry]
-    class Main : MonoBehaviour{
+    class Main : MonoBehaviour
+    {
 
         public static Main instance;
         public MapBoxpp mapboxpp;
@@ -18,7 +20,8 @@ namespace Worldboxpp{ //Change example to the name of your mod
 
         public static string id = "ir.mods.worldbox.worldboxpp";
 
-        void Awake(){
+        void Awake()
+        {
             localisation = new Localisation();
             harmony = new Harmony(id);
             MapBox.instance.cultures = new CultureManagerpp(MapBox.instance);

@@ -1,14 +1,14 @@
-﻿# CircleCI configuration file
+﻿---
+
 version: 2.1
 
 jobs:
-  resource_class:
   deploy:
+    environment:
+      VERSION: 0.0.1
     docker:
       # Primary container image where all steps run
       - image: alpine
-        environment:
-          VERSION: 0.0.1
     steps:
       - checkout
       - run:
@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Package files
           command: |
-            apk add zip 
+            apk add zip
             echo "Creating mod file"
             mkdir /artifacts
             cd deploy

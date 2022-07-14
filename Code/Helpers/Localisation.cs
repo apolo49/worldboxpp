@@ -24,7 +24,7 @@ namespace Worldboxpp.Helpers
 
         public void Process()
         {
-            foreach(var i in Locals.Keys)
+            foreach (var i in Locals.Keys)
             {
                 if (string.IsNullOrEmpty(NCMS.Utils.Localization.Get(i)))
                 {
