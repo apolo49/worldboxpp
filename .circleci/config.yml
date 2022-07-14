@@ -5,9 +5,7 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: sonarsource/sonar-scanner-cli
-        environment:
-          SONAR_HOST_URL: https://sonarcloud.io
+      - image: dotnet-sonar:22.07.3
     steps:
       - checkout
       - run:
@@ -27,18 +25,16 @@ jobs:
       - run:
           name: SonarCloud
           command: >
-            set -e
 
             VERSION=4.7.0.2747
 
             SCANNER_DIRECTORY=/tmp/cache/scanner
 
-            export SONAR_USER_HOME=$SCANNER_DIRECTORY/.sonar
-            export SONAR_LOGIN=$SONAR_TOKEN
+            $Env:SONAR_USER_HOME = $SCANNER_DIRECTORY/.sonar
+            $Env:SONAR_LOGIN = $Env:SONAR_TOKEN
 
-            OS="linux"
-
-            sonar-scanner -Dsonar.projectKey=worldboxpp -Dsonar.sources=/tmp/project
+            dotnet /sonar-scanner/SonarScanner.MSBuild.dll begin /k:worldboxpp /d:sonar.sources=/tmp/project /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$Env:SONAR_TOKEN
+            dotnet /sonar-scanner/SonarScanner.MSBuild.dll end  /d:sonar.login="$Env:SONAR_TOKEN"
   deploy:
     environment:
       RC_VERSION: 1
