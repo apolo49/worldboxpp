@@ -22,7 +22,7 @@ jobs:
           name: sonar-begin
           command: |
             $URL = "https://sonarcloud.io"
-            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login="${SONAR_TOKEN}" /d:sonar.sources="/tmp/project" /d:sonar.verbose=true /o:"apolo49"
+            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login=$Env:SONAR_TOKEN /d:sonar.sources="/tmp/project" /d:sonar.verbose=true /o:"apolo49"
       - run:
           name: build-dll
           command: |
