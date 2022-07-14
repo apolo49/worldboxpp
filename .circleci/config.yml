@@ -73,5 +73,8 @@ orbs:
 workflows:
   Build and deploy:
     jobs:
-      - sonarscan
-      - deploy
+      - sonarscan:
+          context: SonarCloud
+      - deploy:
+          requires:
+            - sonarscan
