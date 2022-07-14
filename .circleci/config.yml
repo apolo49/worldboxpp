@@ -11,7 +11,7 @@ jobs:
       - run:
           name: "Replace Sonarqube project version"
           command: |
-            ls | grep sonar
+            echo $VERSION
             if [ ! -z "$VERSION" ]
             then
                 sed -i -e "6 s/<VERSION>/${VERSION}/" sonar-project.properties
@@ -41,7 +41,7 @@ jobs:
             elif [ "$CIRCLE_BRANCH" = "staging" ]
             then
                 sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
-            elif [ ! -z "CIRCLE_PULL_REQUEST" ]
+            elif [ ! -z "$CIRCLE_PULL_REQUEST" ]
             then
                 sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}/" mod.json
             else
