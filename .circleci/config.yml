@@ -8,9 +8,6 @@ jobs:
     executor:
       name: windows/default
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "36:72:d1:b3:7b:80:32:88:90:1f:22:35:53:ea:9c:c1"
       - checkout
       - run:
           name: "Replace Sonarqube project version"
@@ -18,23 +15,16 @@ jobs:
             (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
             Get-Content ./sonar-project.properties
       - run:
-          name: Install Rust
-          command: |
-            Invoke-WebRequest -Uri https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -outfile "C:\rustup-init.exe"
-            C:\rustup-init.exe -y
-      - run:
           name: Download SteamCMD
           command: |
             New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
             Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
             Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
-            git clone https://github.com/weilbyte/steamcmd-2fa C:/steamcmd-2fa
-            cargo build --manifest-path=C:/steamcmd-2fa/Cargo.toml
-            ls C:/steamcmd-2fa
+            Invoke-WebRequest -Uri https://github.com/Weilbyte/steamcmd-2fa/releases/download/1.0.0/steamcmd-2fa.exe -outfile "C:\steamcmd\steamcmd-2fa.exe"
       - run:
           name: Download WorldBox
           command: |
-            C:\steamcmd\steamcmd-2fa --path . --username $Env:STEAM1 --password $Env:STEAM2 --secret $Env:STEAM3 --args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
+            C:\steamcmd\steamcmd-2fa -path . -username $Env:STEAM1 -password $Env:STEAM2 -seed $Env:STEAM3 -args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
       - run:
           name: Download NCMS
           command: |
