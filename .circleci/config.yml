@@ -49,7 +49,7 @@ jobs:
             dotnet sonarscanner begin \
             /k:worldboxpp \
             /d:sonar.host.url=https://sonarcloud.id \
-            /d:sonar.login=$Env:SONAR_TOKEN \
+            /d:sonar.login=$SONAR_TOKEN\
             /d:sonar.sources=/tmp/project
       - run:
           name: sonar-end
