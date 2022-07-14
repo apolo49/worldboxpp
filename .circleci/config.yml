@@ -20,10 +20,11 @@ jobs:
             New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
             Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
             Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
+            Invoke-WebRequest -Uri https://github.com/Weilbyte/steamcmd-2fa/releases/download/1.0.0/steamcmd-2fa.exe -outfile "C:\steamcmd\steamcmd-2fa.exe"
       - run:
           name: Download WorldBox
           command: |
-            C:\steamcmd\steamcmd +force_install_dir C:\worldbox +login $Env:STEAM1 $Env:STEAM2 +app_update 1206560 validate +quit
+            C:\steamcmd\steamcmd-2fa --path . --username $Env:STEAM1 --password $Env:STEAM2 --secret $Env:STEAM3 --args "+force_install_dir C:\worldbox +app_update 1206560 validate +quit"
       - run:
           name: Download NCMS
           command: |
