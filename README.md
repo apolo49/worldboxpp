@@ -14,7 +14,7 @@ practices may or may not be compatible with other WorldBox mods.
 Master:
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/apolo49/worldboxpp/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/apolo49/worldboxpp/tree/master)
 
-feature/cultureDiverge
+feature/cultureDiverge:
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/apolo49/worldboxpp/tree/feature%2FcultureDiverge.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/apolo49/worldboxpp/tree/feature%2FcultureDiverge)
 
 ## Technology
