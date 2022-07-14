@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Version number
           command: |
+            echo "IS ON PULL REQUEST $CIRCLE_PULL_REQUEST"
             if [ "$CIRCLE_BRANCH" = "master" ]
             then
                 sed "4 s/<VERSION>/${VERSION}/" mod.json
@@ -29,8 +30,8 @@ jobs:
                 sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
             elif [ -z "$CIRCLE_PULL_REQUEST"  ]
             then
-                sed "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${$CIRCLE_PULL_REQUEST}/" mod.json
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${$CIRCLE_PULL_REQUEST}/" mod.json
+                sed "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST}/" mod.json
+                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST}/" mod.json
             else
                 sed "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
                 sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
