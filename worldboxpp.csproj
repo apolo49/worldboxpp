@@ -67,6 +67,59 @@
     <None Include="app.config" />
     <None Include="EmbeddedResources\.gitkeep" />
     <None Include="GameResources\ui\Icons\.gitkeep" />
+    <None Include="lib\QuadTrees\.circleci\config.yml" />
+    <None Include="lib\QuadTrees\.nuget\NuGet.Config" />
+    <None Include="lib\QuadTrees\.nuget\NuGet.targets" />
+    <None Include="lib\QuadTrees\.travis.yml" />
+    <None Include="lib\QuadTrees\LICENSE" />
+    <None Include="lib\QuadTrees\NOTICE" />
+    <None Include="lib\QuadTrees\nuget-upload.sh" />
+    <None Include="lib\QuadTrees\QuadTrees.nuspec" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\bin\Release\netcoreapp3.1\CoverletSourceRootsMapping" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\QuadTrees.Tests.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\QuadTrees.Tests.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\QuadTrees.Tests.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\QuadTrees.Tests.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\project.assets.json" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\project.nuget.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\QuadTrees.Tests.csproj.nuget.dgspec.json" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\QuadTrees.Tests.csproj.nuget.g.props" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\QuadTrees.Tests.csproj.nuget.g.targets" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\QuadTrees.Tests.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\QuadTrees.Tests.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\QuadTrees.Tests.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\QuadTrees.Tests.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees.Tests\QuadTrees.Tests.csproj" />
+    <None Include="lib\QuadTrees\QuadTrees\bin\Debug\netstandard2.1\QuadTrees.deps.json" />
+    <None Include="lib\QuadTrees\QuadTrees\bin\Release\netstandard2.1\QuadTrees.deps.json" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\QuadTrees.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\QuadTrees.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\QuadTrees.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\QuadTrees.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\QuadTrees.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\QuadTrees.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\QuadTrees.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\QuadTrees.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.csproj.CoreCompileInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\project.assets.json" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\project.nuget.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\QuadTrees.csproj.nuget.dgspec.json" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\QuadTrees.csproj.nuget.g.props" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\QuadTrees.csproj.nuget.g.targets" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.AssemblyInfoInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.assets.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.csproj.AssemblyReference.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.csproj.CoreCompileInputs.cache" />
+    <None Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="lib\QuadTrees\QuadTrees\QuadTrees.csproj" />
+    <None Include="lib\QuadTrees\README.md" />
+    <None Include="lib\QuadTrees\travis-ci\autoversion.sh" />
+    <None Include="lib\QuadTrees\travis-ci\nuget-upload.sh" />
     <None Include="mod.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
@@ -75,6 +128,22 @@
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
     <Content Include="HelperGuide.txt" />
+    <Content Include="lib\QuadTrees\.gitattributes" />
+    <Content Include="lib\QuadTrees\.gitignore" />
+    <Content Include="lib\QuadTrees\.nuget\Microsoft.Build.dll" />
+    <Content Include="lib\QuadTrees\.nuget\NuGet.exe" />
+    <Content Include="lib\QuadTrees\nuget.exe" />
+    <Content Include="lib\QuadTrees\QuadTrees.sln" />
+    <Content Include="lib\QuadTrees\QuadTrees\bin\Debug\netstandard2.1\QuadTrees.dll" />
+    <Content Include="lib\QuadTrees\QuadTrees\bin\Debug\netstandard2.1\QuadTrees.pdb" />
+    <Content Include="lib\QuadTrees\QuadTrees\bin\Release\netstandard2.1\QuadTrees.dll" />
+    <Content Include="lib\QuadTrees\QuadTrees\bin\Release\netstandard2.1\QuadTrees.pdb" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.csproj.FileListAbsolute.txt" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.dll" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.pdb" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.csproj.FileListAbsolute.txt" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.dll" />
+    <Content Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Culturepp\CultureListElementpp.cs" />
@@ -88,8 +157,51 @@
     <Compile Include="Code\Helpers\Windows.cs" />
     <Compile Include="Code\Main.cs" />
     <Compile Include="Code\MapBoxpp.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\obj\Debug\netcoreapp3.1\QuadTrees.Tests.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\obj\Release\netcoreapp3.1\QuadTrees.Tests.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\TestPoint.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\TestRectangle.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees.Tests\TestRectPoint.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Common\QuadTreeCommon.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Common\QuadTreeFCommon.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Common\QuadTreeFNodeCommon.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Common\QuadTreeNodeCommon.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Common\QuadTreeObject.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Helper\RectangleHelper.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netcoreapp3.1\QuadTrees.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.0\QuadTrees.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Debug\netstandard2.1\QuadTrees.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\.NETStandard,Version=v2.1.AssemblyAttributes.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\obj\Release\netstandard2.1\QuadTrees.AssemblyInfo.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreePointF\IPointFQuadStorable.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreePointF\QuadTreePointFNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreePoint\IPointQuadStorable.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreePoint\QuadTreePointNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRectF\IRectFQuadStorable.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRectF\QuadTreeRectFNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRectF\QuadTreeRectPointFInvNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRect\IRectFQuadStorable.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRect\QuadTreeRectNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QTreeRect\QuadTreeRectPointFInvNode.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreePoint.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreePointF.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreeRect.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreeRectF.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreeRectPointFInverse.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\QuadTreeRectPointInverse.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Wrappers\QuadTreePointFWrapper.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Wrappers\QuadTreeRectFWrapper.cs" />
+    <Compile Include="lib\QuadTrees\QuadTrees\Wrappers\QuadTreeRectWrapper.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="lib\QuadTrees\QuadTrees\bin\Debug\netcoreapp3.1\" />
+    <Folder Include="lib\QuadTrees\QuadTrees\bin\Debug\netstandard2.0\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
