@@ -27,6 +27,7 @@ jobs:
       - run:
           name: SonarCloud
           command: >
+            pwd
             set -e
 
             VERSION=4.7.0.2747
