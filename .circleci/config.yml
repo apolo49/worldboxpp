@@ -8,6 +8,9 @@ jobs:
     executor:
       name: windows/default
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "36:72:d1:b3:7b:80:32:88:90:1f:22:35:53:ea:9c:c1"
       - checkout
       - run:
           name: "Replace Sonarqube project version"
