@@ -47,10 +47,10 @@ jobs:
           name: sonar-scan
           command: |
             dotnet sonarscanner begin \
-            /k:worldboxpp \
-            /d:sonar.host.url=https://sonarcloud.id \
-            /d:sonar.login=$SONAR_TOKEN\
-            /d:sonar.sources=/tmp/project
+            /k:"worldboxpp" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.login="$SONAR_TOKEN"\
+            /d:sonar.sources="/tmp/project"
       - run:
           name: sonar-end
           command: |
