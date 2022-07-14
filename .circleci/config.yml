@@ -13,9 +13,9 @@ jobs:
           command: |
             if [ ! -z "${VERSION}" ]
             then
-                sed -i -e "6 s/<VERSION>/${VERSION}/" sonar-project.properties
+                sed -i -e "s/<VERSION>/${VERSION}/" ./sonar-project.properties
             else
-                sed -i -e "6 s/<VERSION>/UNKNOWN/" sonar-project.properties
+                sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
             fi
       - sonarcloud/scan
   deploy:
