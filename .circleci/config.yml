@@ -5,7 +5,7 @@ version: 2.1
 jobs:
   sonarscan:
     docker:
-      - image: openjdk;15-jdk-alpine
+      - image: openjdk:19-jdk-alpine3.16
     steps:
       - checkout
       - run:
