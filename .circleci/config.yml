@@ -11,13 +11,14 @@ jobs:
       - run:
           name: "Replace Sonarqube project version"
           command: |
+            ls
             if [ ! -z "${VERSION}" ]
             then
                 sed -i -e "s/<VERSION>/${VERSION}/" ./sonar-project.properties
             else
                 sed -i -e "s/<VERSION>/UNKNOWN/" ./sonar-project.properties
             fi
-            cat ./sonar-project.properties | echo
+            cat ./sonar-project.properties
       - sonarcloud/scan
   deploy:
     environment:
