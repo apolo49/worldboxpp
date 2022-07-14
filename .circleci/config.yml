@@ -11,8 +11,7 @@ jobs:
       - run:
           name: "Replace Sonarqube project version"
           command: |
-            echo $VERSION
-            if [ ! -z "$VERSION" ]
+            if [ ! -z "${VERSION}" ]
             then
                 sed -i -e "6 s/<VERSION>/${VERSION}/" sonar-project.properties
             else
