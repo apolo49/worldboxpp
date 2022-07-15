@@ -22,8 +22,9 @@ jobs:
       - run:
           name: Install steam-totp
           command: |
-            New-Item -Path "C:\" -Name "steamtotp" -ItemType "directory"
-            cd C:\steamtotp
+            New-Item -Path "C:\" -Name "steam2fa" -ItemType "directory"
+            cd C:\steam2fa
+            npm init
             npm install steam-totp
       - run:
           name: Download WorldBox
