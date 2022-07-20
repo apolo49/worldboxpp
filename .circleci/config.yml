@@ -52,9 +52,9 @@ jobs:
           command: |
             New-Item -Path "./lib" -Name "Release" -ItemType "directory"
             Copy-Item -Path "C:\ncms" -Destination "./lib/Release"
-            cd lib
-            Add-Type -LiteralPath "Extractor.cs"
-            [Extractor]::extractAssemblies("$(pwd)"+"\Release\")
+            ls ./lib/Release
+            Add-Type -LiteralPath "lib/Extractor.cs"
+            [Extractor]::extractAssemblies("$pwd"+"\lib\Release\")
       - run:
           name: Move Worldbox binaries
           command: |
