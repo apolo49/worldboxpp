@@ -52,7 +52,7 @@ jobs:
           command: |
             New-Item -Path "./lib" -Name "Release" -ItemType "directory"
             Copy-Item -Path "C:\ncms" -Destination "./lib/Release"
-            $source = Get-Content -Raw -Path "./lib/Release/Extractor.cs"
+            $source = Get-Content -Raw -Path "./lib/Extractor.cs"
             Add-Type -TypeDefinition $source -Language CSharp
             [Extractor]::extractAssemblies("$(pwd)"+"\lib\Release\")
       - run:
