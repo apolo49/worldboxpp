@@ -68,7 +68,8 @@ jobs:
       - run:
           name: Build dll
           command: |
-            dotnet build .
+            dotnet build "WorldBox++.csproj"
+            dotnet build "worldboxpp.sln"
       - run:
           name: End sonar scan
           command: |
@@ -125,6 +126,16 @@ jobs:
             zip -r '/artifacts/Worldbox++.mod' .
       - store_artifacts:
           path: /artifacts
+      - when:
+          condition:
+            equal: [main, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: Upload to github
+                command: |
+                  curl -X post -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: $(file -b -mime-type )"
+
+
 workflows:
   Build and deploy:
     jobs:
