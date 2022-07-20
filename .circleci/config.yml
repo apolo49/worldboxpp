@@ -10,11 +10,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Replace Sonarqube project version"
-          command: |
-            (Get-Content sonar-project.properties) -replace '<VERSION>', $Env:VERSION | Out-File -encoding ASCII sonar-project.properties
-            Get-Content ./sonar-project.properties
-      - run:
           name: Download SteamCMD
           command: |
             New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
@@ -69,7 +64,7 @@ jobs:
           name: Begin sonar scan
           command: |
             $URL = "https://sonarcloud.io"
-            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login=$Env:SONAR_TOKEN /d:sonar.sources="/tmp/project" /d:sonar.verbose=true /o:"apolo49"
+            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login=$Env:SONAR_TOKEN /d:sonar.sources="/tmp/project" /d:sonar.verbose=true /o:"apolo49" /v:"$Env:VERSION"
       - run:
           name: Build dll
           command: |

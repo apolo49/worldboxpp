@@ -68,7 +68,6 @@
     <None Include="GameResources\ui\Icons\.gitkeep" />
     <None Include="mod.json" />
     <None Include="README.md" />
-    <None Include="sonar-project.properties" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitattributes" />
