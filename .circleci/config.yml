@@ -77,7 +77,7 @@ jobs:
       - run:
           name: End sonar scan
           command: |
-            dotnet sonarscanner end /d:sonar.login=$Env:SONAR_TOKEN
+            dotnet sonarscanner end /d:sonar.login="$Env:SONAR_TOKEN"
 
   deploy:
     environment:
