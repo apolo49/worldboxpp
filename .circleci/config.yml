@@ -52,13 +52,15 @@ jobs:
           command: |
             New-Item -Path "./lib" -Name "Release" -ItemType "directory"
             Copy-Item -Path "C:\ncms\*" -Destination "./lib/Release"
-            ls ./lib/Release
             Add-Type -LiteralPath "lib/Extractor.cs"
             [Extractor]::extractAssemblies("$pwd"+"\lib\Release\")
+            Move-Item -Path "./lib/Release/Assemblies/*" -Destination "./lib/Release"
+            Remove-Item "./lib/Release/Assemblies"
       - run:
           name: Move Worldbox binaries
           command: |
-            Copy-Item -Path "C:\worldbox\worldbox_Data\Managed" -Destination "./lib/Release"
+            Copy-Item -Path "C:\worldbox\worldbox_Data\Managed\*" -Destination "./lib/Release"
+            ls ./lib/Release
       - run:
           name: "Install SonarScanner for .NET"
           command: |
