@@ -48,11 +48,11 @@ jobs:
             Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.5.1.zip -outfile "C:\ncms.zip"
             Expand-Archive -LiteralPath "C:\ncms.zip" -DestinationPath "C:\ncms"
       - run:
-          name: Extract NCMS
+          name: Extract NCMS Binaries
           command: |
             New-Item -Path "./lib" -Name "Release" -ItemType "directory"
             Copy-Item -Path "C:\ncms" -Destination "./lib/Release"
-            Add-Type -LiteralPath "lib/Extractor.cs" -Language CSharp
+            Add-Type -LiteralPath "lib/Extractor.cs"
             [Extractor]::extractAssemblies("$(pwd)"+"\lib\Release\")
       - run:
           name: Move Worldbox Binaries
