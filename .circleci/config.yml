@@ -48,7 +48,7 @@ jobs:
             Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.5.1.zip -outfile "C:\ncms.zip"
             Expand-Archive -LiteralPath "C:\ncms.zip" -DestinationPath "C:\ncms"
       - run:
-          name: Extract NCMS Binaries
+          name: Extract NCMS binaries
           command: |
             New-Item -Path "./lib" -Name "Release" -ItemType "directory"
             Copy-Item -Path "C:\ncms" -Destination "./lib/Release"
@@ -56,7 +56,7 @@ jobs:
             Add-Type -LiteralPath "Extractor.cs"
             [Extractor]::extractAssemblies("$(pwd)"+"\Release\")
       - run:
-          name: Move Worldbox Binaries
+          name: Move Worldbox binaries
           command: |
             Copy-Item -Path "C:\worldbox\worldbox_Data\Managed" -Destination "./lib/Release"
       - run:
@@ -64,16 +64,16 @@ jobs:
           command: |
             dotnet tool install --global dotnet-sonarscanner
       - run:
-          name: sonar-begin
+          name: Begin sonar scan
           command: |
             $URL = "https://sonarcloud.io"
             dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login=$Env:SONAR_TOKEN /d:sonar.sources="/tmp/project" /d:sonar.verbose=true /o:"apolo49"
       - run:
-          name: build-dll
+          name: Build dll
           command: |
             dotnet build .
       - run:
-          name: sonar-end
+          name: End sonar scan
           command: |
             dotnet sonarscanner end /d:sonar.login=$Env:SONAR_TOKEN
 

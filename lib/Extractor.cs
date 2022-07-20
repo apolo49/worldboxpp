@@ -40,7 +40,7 @@ public class Extractor
     static byte[] ReadFully(Stream input)
     {
         byte[] array = new byte[16384];
-        using MemoryStream memoryStream = new MemoryStream();
+        MemoryStream memoryStream = new MemoryStream();
         int count;
         while ((count = input.Read(array, 0, array.Length)) > 0)
         {
