@@ -68,14 +68,6 @@ jobs:
            name: "Install Roslynator.CommandLine"
            command: dotnet tool install --global Roslynator.DotNet.Cli --version 0.3.3
       - run:
-           name: "Run Roslynator analyse"
-           command: |
-             roslynator analyze "WorldBox++.csproj"
-      - run:
-          name: "Run SCS for .NET"
-          command: |
-            security-scan worldboxpp.sln
-      - run:
           name: Begin sonar scan
           command: |
             $URL = "https://sonarcloud.io"
@@ -85,6 +77,14 @@ jobs:
           command: |
             dotnet build "WorldBox++.csproj"
             dotnet build "worldboxpp.sln"
+      - run:
+           name: "Run Roslynator analyse"
+           command: |
+             roslynator analyze "WorldBox++.csproj"
+      - run:
+          name: "Run SCS for .NET"
+          command: |
+            security-scan worldboxpp.sln
       - run:
           name: End sonar scan
           command: |
