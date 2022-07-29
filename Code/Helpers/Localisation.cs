@@ -24,12 +24,12 @@ namespace Worldboxpp.Helpers
 
         public void Process()
         {
-            foreach (var i in Locals.Keys)
+            var KeysToBeAdded = from key in Locals.Keys
+                                where string.IsNullOrEmpty(NCMS.Utils.Localization.Get(key))
+                                select key;
+            foreach (var key in KeysToBeAdded)
             {
-                if (string.IsNullOrEmpty(NCMS.Utils.Localization.Get(i)))
-                {
-                    NCMS.Utils.Localization.Add(i, Locals[i]);
-                }
+                NCMS.Utils.Localization.Add(key, Locals[key]);
             }
         }
     }

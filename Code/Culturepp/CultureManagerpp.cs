@@ -85,7 +85,7 @@ namespace Worldboxpp.Culturepp
             culture.create(pRace, pCity);
             __instance.list.Add(culture);
             __instance.dict.Add(culture.id, culture);
-            Debug.Log("New Culture Created: " + culture.name + "\n\tLocation: " + culture.originLoc.ToString());
+            Debug.Log("New Culture Created: " + culture.name + "\n\tLocation: " + culture.OriginLoc.ToString());
             __result = culture;
             return false;
         }
