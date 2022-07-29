@@ -79,10 +79,12 @@ jobs:
             dotnet build "worldboxpp.sln"
       - run:
            name: "Run Roslynator analyse"
+           shell: bash.exe
            command: |
              roslynator analyze "WorldBox++.csproj" || true
       - run:
           name: "Run SCS for .NET"
+          shell: bash.exe
           command: |
             security-scan worldboxpp.sln || true
       - run:
