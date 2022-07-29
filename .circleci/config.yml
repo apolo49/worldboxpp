@@ -84,7 +84,7 @@ jobs:
       - run:
           name: "Run SCS for .NET"
           command: |
-            security-scan worldboxpp.sln; if (-not $?) { $true }
+            security-scan "WorldBox++.csproj"; if (-not $?) { $true }
       - run:
           name: End sonar scan
           command: |

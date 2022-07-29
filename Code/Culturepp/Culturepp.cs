@@ -121,7 +121,7 @@ namespace Worldboxpp.Culturepp
         /// </summary>
         /// <param name="city">City that spawns the divergent culture</param>
         /// <returns>Divergent Culture</returns>
-        private Culturepp CreateDivergentCulture(City city)
+        private void CreateDivergentCulture(City city)
         {
             //Remove City from old culture
             Race cityRace = (Race)ReflectionUtility.Reflection.GetField(typeof(City), city, "race");
@@ -147,7 +147,7 @@ namespace Worldboxpp.Culturepp
             ((CityData)ReflectionUtility.Reflection.GetField(typeof(City), city, "data")).culture = newculture.id;
             foreach (var i in (List<TileZone>)ReflectionUtility.Reflection.GetField(typeof(City), city, "zones"))
                 newculture.addZone(i); // Set zones to this culture
-            return newculture;
+            //return newculture;
         }
 
         /// <summary>

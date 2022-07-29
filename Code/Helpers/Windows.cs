@@ -12,7 +12,7 @@ namespace Worldboxpp.Helpers
     {
 
         public static List<object> windows;
-        readonly GameObject inspect_unit = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit");
+        //readonly GameObject inspect_unit = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit");
 
         public void registerWindow<T>(string name) where T : new()
         {
