@@ -80,11 +80,11 @@ jobs:
       - run:
            name: "Run Roslynator analyse"
            command: |
-             roslynator analyze "WorldBox++.csproj"
+             roslynator analyze "WorldBox++.csproj" || true
       - run:
           name: "Run SCS for .NET"
           command: |
-            security-scan worldboxpp.sln
+            security-scan worldboxpp.sln || true
       - run:
           name: End sonar scan
           command: |
