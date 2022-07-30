@@ -147,7 +147,6 @@ namespace Worldboxpp.Culturepp
             ((CityData)ReflectionUtility.Reflection.GetField(typeof(City), city, "data")).culture = newculture.id;
             foreach (var i in (List<TileZone>)ReflectionUtility.Reflection.GetField(typeof(City), city, "zones"))
                 newculture.addZone(i); // Set zones to this culture
-            //return newculture;
         }
 
         /// <summary>
