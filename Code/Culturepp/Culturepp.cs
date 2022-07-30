@@ -13,7 +13,7 @@ namespace Worldboxpp.Culturepp
     public class Culturepp : Culture
     {
         private Vector2Int originLoc;
-        public Vector2Int OriginLoc { get; }
+        public Vector2Int OriginLoc { get => originLoc; }
         private int lastDivergence;
 
         public String divergedfrom { get; set; }
