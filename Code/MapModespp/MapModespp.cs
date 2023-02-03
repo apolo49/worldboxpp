@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Worldboxpp.Generator
+namespace Worldboxpp.MapModespp
 {
-    internal class Meteoritepp : Meteorite
+    public enum MapModespp
     {
+        Languages
     }
 }

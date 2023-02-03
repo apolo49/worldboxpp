@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using Worldboxpp.Culturepp;
 using UnityEngine;
+using System.Reflection;
+using Worldboxpp.Zones;
+using ReflectionUtility;
 
 namespace Worldboxpp.HarmonyPatches
 {
@@ -19,6 +22,7 @@ namespace Worldboxpp.HarmonyPatches
         {
             Debug.Log("Patched MapBox.Awake()");
             __instance.cultures = new CultureManagerpp(__instance);
+            ReflectionUtility.Reflection.SetField(__instance, "zoneCalculator", new ZoneCalculatorpp());
         }
     }
 

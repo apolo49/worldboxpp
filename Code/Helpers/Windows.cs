@@ -13,7 +13,7 @@ namespace Worldboxpp.Helpers
 
         public static List<object> windows;
 
-        public void registerWindow<T>(string name) where T : new()
+        public static void registerWindow<T>(string name) where T : new()
         {
             Reflection.CallStaticMethod(typeof(ScrollWindow), "checkWindowExist", name);
             var window = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + name);

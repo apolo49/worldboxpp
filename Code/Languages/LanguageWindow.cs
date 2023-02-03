@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace worldboxpp.Language
+namespace Worldboxpp.Languages
 {
     internal class LanguageWindow : MonoBehaviour
     {
@@ -53,6 +53,7 @@ namespace worldboxpp.Language
         private void Awake()
         {
             nameInput.addListener(applyInputName);
+            Worldboxpp.Helpers.Windows.registerWindow("languages");
         }
 
         private void applyInputName(string input)

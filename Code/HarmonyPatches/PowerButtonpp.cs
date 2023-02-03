@@ -27,7 +27,7 @@ namespace Worldboxpp.HarmonyPatches
                 clockButtMover.GetComponent<RectTransform>().localScale = new Vector3(5, 1, 1);
                 clockButtMover.GetComponent<RectTransform>().ForceUpdateRectTransforms();
                 clockButton.transform.SetParent(null, false);
-                var slider = Helpers.Buttons.RegisterSlider("time_scale", clockButtMover.transform, "Time Scale", null, null, clockButton.gameObject);
+                //var slider = Helpers.Buttons.RegisterSlider("time_scale", clockButtMover.transform, "Time Scale", null, null, clockButton.gameObject);
                 PowerButton.powerButtons.Remove(clockButton);
             }
 

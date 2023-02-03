@@ -6,8 +6,10 @@ repos:
     -   id: trailing-whitespace
         exclude: ^[Ww]orld[Bb]ox(\+\+\.csproj|pp\.sln)
     -   id: end-of-file-fixer
+        exclude: ^[Ww]orld[Bb]ox(\+\+\.csproj|pp\.sln)
     -   id: check-yaml
     -   id: check-added-large-files
+        exclude: ^[Ww]orld[Bb]ox(\+\+\.csproj|pp\.sln)
     -   id: check-case-conflict
     -   id: check-json
     -   id: check-merge-conflict

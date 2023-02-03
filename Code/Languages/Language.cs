@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Worldboxpp.Culturepp;
 
-namespace worldboxpp.Language
+namespace Worldboxpp.Languages
 {
     public class Language
     {
@@ -70,7 +70,7 @@ namespace worldboxpp.Language
 
         public String divergedfrom { get; set; }
 
-        public void create(Race pRace, City pCity, Culturepp pCulturepp)
+        public void create(Race pRace, City pCity, Culturepp.Culturepp pCulturepp)
         {
             origin_race = pRace.id;
             id = get_next_id();
@@ -264,12 +264,16 @@ namespace worldboxpp.Language
             units.Clear();
             MethodInfo mf = typeof(Toolbox).GetMethod("fillListWithUnitsFromChunk");
             mf.Invoke(null, new object[] { bestZoneToSpreadFrom.centerTile.chunk, units });
-            for (int i = 0; i < units.Count; i++)
+            FieldInfo fi = typeof(Actor).GetField("data");
+            foreach (
+                Language lang in units.Select(
+                    unit => ((ActorStatus)fi.GetValue(unit)).languages.Exists(
+                        pID => pID == id
+                    )
+                )
+            )
             {
-                if (units[i].data.languages.Exists(x => x == id))
-                {
-                    external_pressure += 0.05f;
-                }
+                external_pressure += 0.05f;
             }
 
             float overall_pressure = stats.culture_spread_convert_chance.value * (float)neighbour_count + external_pressure;
@@ -291,7 +295,7 @@ namespace worldboxpp.Language
             _list_zones_to_spread.AddRange(pZone.neighbours);
             TileZone tileZone = null;
             TileZone tileZone2 = null;
-            Language culture = pZone.language;
+            Language language = pZone.language;
             for (int i = 0; i < _list_zones_to_spread.Count; i++)
             {
                 _list_zones_to_spread.ShuffleOne(i);
@@ -378,10 +382,10 @@ namespace worldboxpp.Language
             float num3;
             float num4 = 0f;
             TileZone tileZone = null;
-            foreach (TileZone zone in zones)
+            foreach (Vector3 zonePosV3 in zones.Select(zone => zone.centerTile.posV3))
             {
-                num += zone.centerTile.posV3.x;
-                num2 += zone.centerTile.posV3.y;
+                num += zonePosV3.x;
+                num2 += zonePosV3.y;
             }
 
             titleCenter.x = num / (float)zones.Count;

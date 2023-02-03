@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Worldboxpp.Culturepp;
 
-namespace worldboxpp.Language
+namespace Worldboxpp.Languages
 {
     public class LanguageManager
     {

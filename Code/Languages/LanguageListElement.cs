@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace worldboxpp.Language
+namespace Worldboxpp.Languages
 {
     public class LanguageListElement : MonoBehaviour
     {

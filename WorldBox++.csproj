@@ -75,6 +75,8 @@
     <Content Include="HelperGuide.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Configpp\Configpp.cs" />
+    <Compile Include="Code\Languages\LanguageButton.cs" />
     <Compile Include="Code\Languages\LanguageListWindow.cs" />
     <Compile Include="Code\Languages\LanguageListElement.cs" />
     <Compile Include="Code\Languages\LanguageManager.cs" />
@@ -85,7 +87,6 @@
     <Compile Include="Code\Culturepp\CultureManagerpp.cs" />
     <Compile Include="Code\Culturepp\Culturepp.cs" />
     <Compile Include="Code\Culturepp\CultureWindowpp.cs" />
-    <Compile Include="Code\Generator\Meteoritepp.cs" />
     <Compile Include="Code\HarmonyPatches\Patch.cs" />
     <Compile Include="Code\HarmonyPatches\PowerButtonpp.cs" />
     <Compile Include="Code\Helpers\Buttons.cs" />
@@ -93,6 +94,10 @@
     <Compile Include="Code\Helpers\Windows.cs" />
     <Compile Include="Code\Main.cs" />
     <Compile Include="Code\MapBoxpp.cs" />
+    <Compile Include="Code\MapModespp\MapModespp.cs" />
+    <Compile Include="Code\Configpp\PlayerConfigpp.cs" />
+    <Compile Include="Code\Zones\TileZonepp.cs" />
+    <Compile Include="Code\Zones\ZoneCalculatorpp.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -730,6 +735,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Release\UnityEngine.XRModule.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EmbeddedResources\icons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
