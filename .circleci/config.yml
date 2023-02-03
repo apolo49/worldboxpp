@@ -40,7 +40,7 @@ jobs:
           name: Download NCMS
           command: |
             New-Item -Path "C:\" -Name "NCMS" -ItemType "directory"
-            Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.5.1.zip -outfile "C:\ncms.zip"
+            Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.6.0.zip -outfile "C:\ncms.zip"
             Expand-Archive -LiteralPath "C:\ncms.zip" -DestinationPath "C:\ncms"
       - run:
           name: Extract NCMS binaries
