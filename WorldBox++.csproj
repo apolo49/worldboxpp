@@ -85,7 +85,6 @@
     <Compile Include="Code\Culturepp\CultureManagerpp.cs" />
     <Compile Include="Code\Culturepp\Culturepp.cs" />
     <Compile Include="Code\Culturepp\CultureWindowpp.cs" />
-    <Compile Include="Code\DisasterActionpp.cs" />
     <Compile Include="Code\Generator\Meteoritepp.cs" />
     <Compile Include="Code\HarmonyPatches\Patch.cs" />
     <Compile Include="Code\HarmonyPatches\PowerButtonpp.cs" />
