@@ -10,7 +10,7 @@ namespace Worldboxpp.Culturepp
         [HarmonyPatch("showInfo")]
         static public void showInfo(CultureWindow __instance)
         {
-            String loc = ((Culturepp)Config.selectedCulture).originLoc.ToString();
+            String loc = ((Culturepp)Config.selectedCulture).OriginLoc.ToString();
             if (!string.IsNullOrEmpty(loc))
             {
                 ReflectionUtility.Reflection.CallMethod(__instance, "showStat", "culture_founded_at", loc);

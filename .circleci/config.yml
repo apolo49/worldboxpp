@@ -1,11 +1,98 @@
 ﻿---
 
 version: 2.1
-
+orbs:
+  windows: circleci/windows@4.1.1
 jobs:
+  sonarscan:
+    executor:
+      name: windows/default
+    steps:
+      - checkout
+      - run:
+          name: Download SteamCMD
+          command: |
+            New-Item -Path "C:\" -Name "steamcmd" -ItemType "directory"
+            Invoke-WebRequest -Uri https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -outfile "C:\steamcmd.zip"
+            Expand-Archive -LiteralPath "C:\steamcmd.zip" -DestinationPath "C:\steamcmd"
+      - run:
+          name: Install steam-totp
+          command: |
+            New-Item -Path "C:\" -Name "steam2fa" -ItemType "directory"
+            cd C:\steam2fa
+            npm init
+            npm install steam-totp
+            $code = echo "var SteamTotp = require('steam-totp'); var code = SteamTotp.generateAuthCode('$Env:STEAM3'); console.log(code)" | node
+            echo $code > C:\code
+      - run:
+          name: Download WorldBox
+          command: |
+            set-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings' -name AutoConfigURL -value 'proxy address'
+            $key = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections'
+            [byte[]]$data = (Get-ItemProperty -Path $key).DefaultConnectionSettings
+            $data[8] = 9
+            Set-ItemProperty -Path $key -Name DefaultConnectionSettings -Value $data
+
+            $code = Get-Content C:\code
+            C:\steamcmd\steamcmd +force_install_dir C:\worldbox +login $Env:STEAM1 $Env:STEAM2 $code +app_update 1206560 +quit
+            cat C:\steamcmd\logs\stderr.txt
+      - run:
+          name: Download NCMS
+          command: |
+            New-Item -Path "C:\" -Name "NCMS" -ItemType "directory"
+            Invoke-WebRequest -Uri https://denq04.github.io/ncms/static/files/ncms/ncms.1.5.1.zip -outfile "C:\ncms.zip"
+            Expand-Archive -LiteralPath "C:\ncms.zip" -DestinationPath "C:\ncms"
+      - run:
+          name: Extract NCMS binaries
+          command: |
+            New-Item -Path "./lib" -Name "Release" -ItemType "directory"
+            Copy-Item -Path "C:\ncms\*" -Destination "./lib/Release"
+            Add-Type -LiteralPath "lib/Extractor.cs"
+            [Extractor]::extractAssemblies("$pwd"+"\lib\Release\")
+            Move-Item -Path "./lib/Release/Assemblies/*" -Destination "./lib/Release"
+            Remove-Item "./lib/Release/Assemblies"
+      - run:
+          name: Move Worldbox binaries
+          command: |
+            Copy-Item -Path "C:\worldbox\worldbox_Data\Managed\*" -Destination "./lib/Release"
+            ls ./lib/Release
+      - run:
+          name: "Install SonarScanner for .NET"
+          command: |
+            dotnet tool install --global dotnet-sonarscanner
+      - run:
+          name: "Install SCS for .NET"
+          command: |
+            dotnet tool install --global security-scan
+      - run:
+           name: "Install Roslynator.CommandLine"
+           command: dotnet tool install --global Roslynator.DotNet.Cli --version 0.3.3
+      - run:
+          name: Begin sonar scan
+          command: |
+            $URL = "https://sonarcloud.io"
+            dotnet sonarscanner begin /k:"worldboxpp" /d:sonar.host.url=$URL /d:sonar.login=$Env:SONAR_TOKEN /d:sonar.sources="/tmp/project" /o:"apolo49" /v:"$Env:VERSION"
+      - run:
+          name: Build dll
+          command: |
+            dotnet build "WorldBox++.csproj"
+            dotnet build "worldboxpp.sln"
+      - run:
+           name: "Run Roslynator analyse"
+           command: |
+             roslynator analyze "WorldBox++.csproj"; if (-not $?) { $true }
+      - run:
+          name: "Run SCS for .NET"
+          command: |
+            security-scan "WorldBox++.csproj"; if (-not $?) { $true }
+      - run:
+          name: End sonar scan
+          command: |
+            dotnet sonarscanner end /d:sonar.login="$Env:SONAR_TOKEN"
+
   deploy:
     environment:
-      VERSION: 0.0.1
+      RC_VERSION: 1
     docker:
       # Primary container image where all steps run
       - image: alpine
@@ -19,16 +106,19 @@ jobs:
       - run:
           name: Version number
           command: |
-            echo $CIRCLE_PULL_REQUEST
-            if [ $CIRCLE_BRANCH = "master" ]
+            if [ "$CIRCLE_BRANCH" = "master" ]
             then
-                sed -i "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
-            elif [ -z $CIRCLE_PULL_REQUEST  ]
+                sed -i -e "4 s/<VERSION>/${VERSION}/" mod.json
+            elif [ "$CIRCLE_BRANCH" = "staging" ]
             then
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+                sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+            elif [ ! -z "$CIRCLE_PULL_REQUEST" ]
+            then
+                sed -i -e "4 s/<VERSION>/${VERSION}RC${RC_VERSION}PR${CIRCLE_PULL_REQUEST##*/}/" mod.json
             else
-                sed -i "4 s/<VERSION>/${VERSION}RC${RC_VERSION}/" mod.json
+                sed -i -e "4 s/<VERSION>/COM-${CIRCLE_SHA1}/" mod.json
             fi
+
       - run:
           name: Change structure
           command: |
@@ -51,7 +141,21 @@ jobs:
             zip -r '/artifacts/Worldbox++.mod' .
       - store_artifacts:
           path: /artifacts
+      - when:
+          condition:
+            equal: [main, << pipeline.git.branch >> ]
+          steps:
+            - run:
+                name: Upload to github
+                command: |
+                  curl -X post -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: $(file -b -mime-type )"
+
+
 workflows:
   Build and deploy:
     jobs:
-      - deploy
+      - sonarscan:
+          context: SonarCloud
+      - deploy:
+          requires:
+            - sonarscan

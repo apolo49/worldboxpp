@@ -41,7 +41,7 @@ repos:
     -   id: dotnet-format
         name: dotnet-format
         language: system
-        entry: dotnet format worldboxpp.csproj --include
+        entry: dotnet format WorldBox++.csproj --include
         types_or: ["c#", "vb"]
 -   repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.4.0

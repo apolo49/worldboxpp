@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Worldboxpp.HarmonyPatches
 {
     [HarmonyPatch(typeof(MapBox))]
-    internal class Patch
+    static internal class Patch
     {
 
         [HarmonyPostfix]
