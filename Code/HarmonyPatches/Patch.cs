@@ -21,4 +21,28 @@ namespace Worldboxpp.HarmonyPatches
             __instance.cultures = new CultureManagerpp(__instance);
         }
     }
+
+    [HarmonyPatch(typeof(MapStats))]
+    internal class Patch_MapStats
+    {
+
+        public static int id_language;
+
+        [HarmonyPostfix]
+        [HarmonyPatch("getNextID")]
+        static void getNextID(MapStats __instance, ref string __result, string pType)
+        {
+            if (__result == "")
+            {
+                switch (pType)
+                {
+                    case "language":
+                        __result = "l_" + id_language++;
+                        break;
+                }
+            }
+
+        }
+
+    }
 }

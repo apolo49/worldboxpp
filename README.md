@@ -119,7 +119,18 @@ culture.
 This allows for a more dynamic game, although if it is volatile enough there is
 a chance that the every village will be a different culture.
 
-### Contributing
+### Languages
+
+Languages are a new concept in the game similar to Cultures, however an entity
+may speak several languages. At the moment languages are purely cosmetic, but
+in the future langauges will effect diplomacy between kingdoms and will effect
+relationships between people.
+
+Languages can also be learned across races.
+
+Each culture that forms may form its own language.
+
+## Contributing
 
 Contributions of all kinds are welcomed and are encouraged. Though to begin
 development of the mod a few tools must be installed beforehand.
@@ -141,7 +152,7 @@ Recommended (Windows Machines):
 - Windows Terminal
 - Docker Desktop
 
-#### Setup
+### Setup
 
 Clone the repo to your local machine
 

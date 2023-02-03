@@ -75,17 +75,28 @@
     <Content Include="HelperGuide.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Languages\LanguageListWindow.cs" />
+    <Compile Include="Code\Languages\LanguageListElement.cs" />
+    <Compile Include="Code\Languages\LanguageManager.cs" />
+    <Compile Include="Code\Languages\Language.cs" />
+    <Compile Include="Code\Languages\LanguageWindow.cs" />
+    <Compile Include="Code\Sliders\SliderSelector.cs" />
+    <Compile Include="Code\Sliders\Sliderpp.cs" />
     <Compile Include="Code\Culturepp\CultureListElementpp.cs" />
     <Compile Include="Code\Culturepp\CultureListWindowpp.cs" />
     <Compile Include="Code\Culturepp\CultureManagerpp.cs" />
     <Compile Include="Code\Culturepp\Culturepp.cs" />
     <Compile Include="Code\Culturepp\CultureWindowpp.cs" />
+    <Compile Include="Code\DisasterActionpp.cs" />
     <Compile Include="Code\Generator\Meteoritepp.cs" />
     <Compile Include="Code\HarmonyPatches\Patch.cs" />
+    <Compile Include="Code\HarmonyPatches\PowerButtonpp.cs" />
+    <Compile Include="Code\Helpers\Buttons.cs" />
     <Compile Include="Code\Helpers\Localisation.cs" />
     <Compile Include="Code\Helpers\Windows.cs" />
     <Compile Include="Code\Main.cs" />
     <Compile Include="Code\MapBoxpp.cs" />
+    <Compile Include="Code\Sliders\SliderViewer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
