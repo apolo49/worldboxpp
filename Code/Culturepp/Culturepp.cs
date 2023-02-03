@@ -98,9 +98,8 @@ namespace Worldboxpp.Culturepp
             }
 
             ReflectionUtility.Reflection.CallMethod(MapBox.instance, "updateDirty", pElapsed);
-            this.split();
-
-
+            if (Toolbox.randomChance(0.9f))
+                this.split();
         }
 
         /// <summary>

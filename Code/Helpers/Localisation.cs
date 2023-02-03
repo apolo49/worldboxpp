@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReflectionUtility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Worldboxpp.Helpers
 {
     public class Localisation
     {
-
-        public Dictionary<string, string> Locals { get; }
+        private Dictionary<string, string> locals = new Dictionary<string, string>();
+        public Dictionary<string, string> Locals { get => locals; }
 
         public Localisation()
         {
@@ -19,13 +20,15 @@ namespace Worldboxpp.Helpers
 
         public void Add(string key, string local)
         {
-            Locals.Add(key, local);
+            if (!Locals.ContainsKey(key))
+                Locals.Add(key, local);
         }
 
         public void Process()
         {
+            var Worldboxlocal = (Dictionary<string, string>)Reflection.GetField(LocalizedTextManager.instance.GetType(), LocalizedTextManager.instance, "localizedText");
             var KeysToBeAdded = from key in Locals.Keys
-                                where string.IsNullOrEmpty(NCMS.Utils.Localization.Get(key))
+                                where Worldboxlocal.ContainsKey(key) == false
                                 select key;
             foreach (var key in KeysToBeAdded)
             {
